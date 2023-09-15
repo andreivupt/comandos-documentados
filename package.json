@@ -1,0 +1,17 @@
+{
+  "name": "apinodedocumentada",
+  "version": "1.0.0",
+  "description": "* Escolher local do computador para criar a pasta do projeto\r * Abrir o gitBash nesta pasta",
+  "main": "index.js",
+  "scripts": {
+    "start":"nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1"
+  }
+}
