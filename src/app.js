@@ -10,7 +10,7 @@ const crudRouter = require('./routes/crudRouter');
 const dotenv = require('dotenv').config();
 
 // Habilitar a utilização do crudRouter
-app.use(crudRouter);
+app.use('/api', crudRouter);
 
 //Setar a porta do servidor, a partir do arquivo .env
 app.set('port', process.env.PORT);

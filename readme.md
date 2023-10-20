@@ -105,29 +105,25 @@ nano crudRouter.js
 
 * Digitar o código no arquivo criado
 ```
-// Importar pacote do express
+/// Importar pacote do express
 const { Router } = require('express');
 // Instanciar o Router na variavel router
 const router = Router();
-const { listarDados } = require('../controllers/controller');
+// Importar funções do controller para a rota acessar as funções
+const { 
+    listarDados,
+    gravarDados,
+    atualizarDados,
+    deletarDados
+ } = require('../controllers/controller');
 
-router.get('/api', listarDados);
+router.get('/listar', listarDados);
 
-router.post('/api', (request, response) => {
-    response.send('Método utilizado para salvar informações!');
-    console.log('post');
-});
+router.post('/gravar', gravarDados);
 
-router.put('/api/:id', (request, response) => {
-    response.send('Método utilizado para editar informações!');
-    console.log('put');
-    console.log('id', request.params.id)
-});
+router.put('/atualizar/:id', atualizarDados);
 
-router.delete('/api/:id', (request, response) => {
-    response.send('Método utilizado para deletar informações!');
-    console.log('delete')
-});
+router.delete('/deletar/:id', deletarDados);
 
 module.exports = router;
 ```
@@ -152,10 +148,26 @@ touch src/controllers/controller.js
 ```
 function listarDados(request, response) {
     response.send('Retorno de lista de informação do Banco de dados');
-    console.log('get')
+}
+
+function gravarDados(request, response) {
+    response.send('Método utilizado para salvar informações!');
+}
+
+function atualizarDados(request, response) {
+    response.send('Método utilizado para editar informações!');
+}
+
+function deletarDados(request, response) {
+    response.send('Método utilizado para deletar informações!');
 }
 
 module.exports = {
-    listarDados
+    listarDados,
+    gravarDados, 
+    atualizarDados, 
+    deletarDados
 }
 ```
+
+* 
