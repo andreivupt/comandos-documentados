@@ -1,3 +1,5 @@
+const connection = require('../config/db');
+
 function listarDados(request, response) {
     response.send('Retorno de lista de informação do Banco de dados');
 }
