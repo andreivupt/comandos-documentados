@@ -3,8 +3,6 @@ const mysql = require('mysql2');
 // Importar variaveis de conexão do banco
 require('dotenv').config();
 
-console.log(process.env.DB_HOST);
-
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
