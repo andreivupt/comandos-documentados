@@ -59,7 +59,32 @@ console.log(request.body)
   })
 }
 
+async function update (request, response) {
+  // Comando sql
+  const query = "UPDATE alunos nome = ?, dt_nascimento = ?, time_do_coracao = ? WHERE id = ?; ";
+
+  const params = Array(
+    request.body.nome,
+    request.body.dt_nascimento,
+    request.body.time_do_coracao,
+    request.params.id
+  );
+
+  connection.query(query, params, (err, results) => {
+    if (results) {
+      response
+        .status(200)
+        .json({
+          success: true,
+          message: "Aluno atualizado com sucesso!",
+          data: results
+        })
+    }
+  })
+}
+
 module.exports = {
   listarUsuarios,
-  cadastrarAluno
+  cadastrarAluno,
+  update
 };
