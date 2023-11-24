@@ -6,11 +6,13 @@ const router     = Router();
 const {
   listarUsuarios,
   cadastrarAluno, 
-  update
+  update,
+  deleteAluno
 } = require('../controllers/alunosController');
 
 router.get('/alunos', listarUsuarios);
 router.post('/aluno/create', cadastrarAluno);
 router.put('/aluno/update/:id', update);
+router.delete('/aluno/delete/:id', deleteAluno);
 
 module.exports = router;
