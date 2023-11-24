@@ -120,9 +120,39 @@ async function deleteAluno(request, response) {
   })
 }
 
+async function selecionarAlunoId(request, response) {
+  // Comando sql
+  const query = "SELECT * FROM alunos WHERE id = ?;";
+
+  const params = Array(
+    request.params.id
+  );
+
+  connection.query(query, params, (err, results) => {
+    if (results) {
+      response
+        .status(200)
+        .json({
+          success: true,
+          message: "Aluno selecionado com sucesso!",
+          data: results
+        })
+    } else {
+      response
+        .status(400)
+        .json({
+          success: false,
+          message: "Aluno não encontrado!",
+          mysql: err
+        })
+    }
+  })
+}
+
 module.exports = {
   listarUsuarios,
   cadastrarAluno,
   update,
-  deleteAluno
+  deleteAluno,
+  selecionarAlunoId
 };
