@@ -1,4 +1,4 @@
-# Documentação da API
+# Documentação  para construção de API com NodeJS
 * Escolher local do computador para criar a pasta do projeto
 * Abrir o gitBash nesta pasta
 ```
@@ -16,14 +16,8 @@ Iniciar o gerenciador de pacotes Node
 ```
 npm init -y
 ```
-Criar arquivo .gitignore
-```
-touch .gitignore
-```
-Criar arquivo .env: armazenará as variáveis do ambiente
-```
-touch .env
-```
+* Cria o arquivo package.json para gerenciar os pacotes da aplicação
+
 # Instalar pacotes da API
 ```
 npm i express nodemon dotenv mysql2
@@ -31,6 +25,19 @@ npm i express nodemon dotenv mysql2
 * espress: será o servidor da api
 * nodemon: atualizar os arquivos alterados sem parar o servidor 
 * dotenv: gerenciador de variáveis de ambiente
+* mysql2: integrar aplicação com o banco de dados
+
+Criar arquivo .gitignore
+```
+touch .gitignore
+```
+* Arquivo responsável por ignorar arquivos e pastas no gitHub, ou seja, não serão visíveis no repositório remoto
+
+Criar arquivo .env: armazenará as variáveis do ambiente
+```
+touch .env
+```
+* Arquivo responsável por armazenar as variáveis de ambiente 
 
 Informar arquivos e pastas no .gitignore
 ```
@@ -41,23 +48,23 @@ Criar pasta src para estrutura do projeto
 ```
 mkdir src
 ```
+* Pasta responsável por organizar a estrutura da aplicação
+
 Criar arquivo server.js na pasta src
 ```
 touch src/server.js
 ```
-Configurar o servidor
+* Arquivo responsável por rodar a aplicação
+
+Colar o código de configuração no arquivo 'server.js'
 ```
-// Importar pacote do express
-const express = require('express');
-// Instanciar o express na variavel app
-const app = express();
-// Importar o pacote dotenv
-const dotenv = require('dotenv').config();
-// Definir a porta do servidor 
-const PORT = process.env.PORT || 3005;
+// Importar o arquivo de configuração
+const app = require('./app');
+// Importar a porta do servidor
+const port = app.get('port');
 
 // Testar servidor
-app.listen(PORT, () => console.log(`Running at port ${PORT}`));
+app.listen(port, () => console.log(`Running at port ${port}`));
 ```
 
 Criar comando para rodar o servidor
